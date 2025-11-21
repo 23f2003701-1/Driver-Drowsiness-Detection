@@ -1,4 +1,4 @@
-# Driver Drowsiness Detection Using Multimodal Ensemble
+# Driver Drowsiness Detection
 
 - Most existing driver drowsiness detectors rely heavily on eye-based features (EAR, blink rate) and completely fail when the driver wears sunglasses or has occluded eyes, which is a very common real-world scenario during daytime driving, leading to dangerous false negatives.
 - Our system solves this by combining a classical geometric model (using mouth-based MAR & MOE that work even with sunglasses) with a high-accuracy three-branch CNN (face + left/right eyes).
@@ -33,7 +33,7 @@
   When EAR drops or becomes unreliable (e.g., sunglasses), MAR alone drives MOE high during yawning → strong drowsy signal even with fully covered eyes.
 
 
-![EAR & MAR](images\ear_mar.png)
+![EAR & MAR](images/ear_mar.png)
 
 
 
@@ -76,9 +76,6 @@ pip install torch torchvision opencv-python scikit-learn dlib matplotlib numpy
 
 
 ## Demo Output 
-![Output](images\output_ss.png)
-
-
-
+![Output](images/output_ss.png)
 
 Built by: Esha Bidkar, Carol Chopde, Prachi Chavhan, Niharika Hariharan
