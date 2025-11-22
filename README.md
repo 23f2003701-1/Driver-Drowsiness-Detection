@@ -1,4 +1,4 @@
-# Driver Drowsiness Detection Using Multimodal Ensemble
+# Driver Drowsiness Detection
 
 - Most existing driver drowsiness detectors rely heavily on eye-based features (EAR, blink rate) and completely fail when the driver wears sunglasses or has occluded eyes, which is a very common real-world scenario during daytime driving, leading to dangerous false negatives.
 - Our system solves this by combining a classical geometric model (using mouth-based MAR & MOE that work even with sunglasses) with a high-accuracy three-branch CNN (face + left/right eyes).
@@ -9,31 +9,17 @@
 ## Drowsiness Detection Features (Facial Landmarks)
 
 - **EAR (Eye Aspect Ratio)**: Measures eye opening. Lower values indicate closed or blinking eyes.  
-  $$
-  \text{EAR} = \frac{\|p_2 - p_6\| + \|p_3 - p_5\|}{2 \cdot \|p_1 - p_4\|}
-  $$  
-  where $p_1 … p_6$ are the six eye corner landmarks.
 
 - **MAR (Mouth Aspect Ratio)**: Measures how widely the mouth is open (yawning).  
-  $$
-  \text{MAR} = \frac{|v_1| + |v_2| + |v_3|}{2 \cdot |h|}
-  $$  
-  where $v_1, v_2, v_3$ are vertical distances inside the mouth and $h$ is the mouth width.
 
 - **Eye Circularity**: Detects squinting by measuring how circular the eye contour is.  
-  $$
-  \text{Circularity} = \frac{4\pi \cdot \text{Area(eye contour)}}{\text{Perimeter(eye contour)}^2}
-  $$  
   Values close to 1 → wide-open circular eye; lower values → squinted/closed.
 
 - **MOE (Mouth-over-Eye Ratio)**: Highly robust drowsiness indicator, especially when eyes are occluded by sunglasses.  
-  $$
-  \text{MOE} = \frac{\text{MAR}}{\text{EAR}}
-  $$  
   When EAR drops or becomes unreliable (e.g., sunglasses), MAR alone drives MOE high during yawning → strong drowsy signal even with fully covered eyes.
 
 
-![EAR & MAR](images\ear_mar.png)
+![EAR & MAR](images/ear_mar.png)
 
 
 
@@ -76,9 +62,6 @@ pip install torch torchvision opencv-python scikit-learn dlib matplotlib numpy
 
 
 ## Demo Output 
-![Output](images\output_ss.png)
-
-
-
+![Output](images/output_ss.png)
 
 Built by: Esha Bidkar, Carol Chopde, Prachi Chavhan, Niharika Hariharan
